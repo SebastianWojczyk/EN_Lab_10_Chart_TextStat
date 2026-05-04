@@ -50,8 +50,8 @@ namespace EN_Lab_10_Chart_TextStat
             chartGroupFrequency.ChartAreas[0].AxisX.Interval = 1;
 
             //labels for axes
-            chartGroupFrequency.Titles.Add("Word Length Frequency");
-            chartGroupFrequency.ChartAreas[0].AxisX.Title = "Word Length";
+            chartGroupFrequency.Titles.Add("Character Group Frequency");
+            chartGroupFrequency.ChartAreas[0].AxisX.Title = "Character Group";
             chartGroupFrequency.ChartAreas[0].AxisY.Title = "Count";
 
             chartGroupFrequency.Legends[0].Enabled = false;
