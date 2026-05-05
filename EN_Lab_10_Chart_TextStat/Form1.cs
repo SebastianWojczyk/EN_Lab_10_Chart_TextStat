@@ -17,48 +17,30 @@ namespace EN_Lab_10_Chart_TextStat
         {
             InitializeComponent();
 
-            //for better readability - every character on the x-axis
-            chartCharsFrequency.ChartAreas[0].AxisX.Interval = 1;
-
-            //labels for axes
+            //label for axes
             chartCharsFrequency.Titles.Add("Character Frequency");
             chartCharsFrequency.ChartAreas[0].AxisX.Title = "Characters";
-            chartCharsFrequency.ChartAreas[0].AxisY.Title = "Count";
 
-            chartCharsFrequency.Legends[0].Enabled = false;
-
-            //remove grid lines for better readability
-            chartCharsFrequency.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Transparent;
-            chartCharsFrequency.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Transparent;
-
-
-            //for better readability - every character on the x-axis
-            chartWordsLength.ChartAreas[0].AxisX.Interval = 1;
-
-            //labels for axes
             chartWordsLength.Titles.Add("Word Length Frequency");
             chartWordsLength.ChartAreas[0].AxisX.Title = "Word Length";
-            chartWordsLength.ChartAreas[0].AxisY.Title = "Count";
 
-            chartWordsLength.Legends[0].Enabled = false;
-
-            //remove grid lines for better readability
-            chartGroupFrequency.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Transparent;
-            chartGroupFrequency.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Transparent;
-
-            //for better readability - every character on the x-axis
-            chartGroupFrequency.ChartAreas[0].AxisX.Interval = 1;
-
-            //labels for axes
             chartGroupFrequency.Titles.Add("Character Group Frequency");
             chartGroupFrequency.ChartAreas[0].AxisX.Title = "Character Group";
-            chartGroupFrequency.ChartAreas[0].AxisY.Title = "Count";
 
-            chartGroupFrequency.Legends[0].Enabled = false;
+            foreach (Chart ch in new Chart[] { chartCharsFrequency, chartGroupFrequency, chartWordsLength })
+            {
+                //for better readability - every character on the x-axis
+                ch.ChartAreas[0].AxisX.Interval = 1;
 
-            //remove grid lines for better readability
-            chartGroupFrequency.ChartAreas[0].AxisX.MajorGrid.LineColor = Color.Transparent;
-            chartGroupFrequency.ChartAreas[0].AxisY.MajorGrid.LineColor = Color.Transparent;
+                //labels for axes
+                ch.ChartAreas[0].AxisY.Title = "Count";
+
+                ch.Legends[0].Enabled = false;
+
+                //remove grid lines for better readability
+                ch.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+                ch.ChartAreas[0].AxisY.MajorGrid.Enabled = false;
+            }
 
             richTextBox_TextChanged(null, null);
         }
@@ -122,7 +104,7 @@ namespace EN_Lab_10_Chart_TextStat
 
             words = richTextBox.Text.Split(new char[] { ' ', '\n', '\r', '\t' },
                                            StringSplitOptions.RemoveEmptyEntries);
-            
+
             Dictionary<int, int> wordLengthCount = new Dictionary<int, int>();
             foreach (String word in words)
             {
